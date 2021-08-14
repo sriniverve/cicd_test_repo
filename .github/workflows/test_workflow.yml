@@ -14,7 +14,6 @@ jobs:
 
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    env:
 
     steps:
       - name: slack message notification for the start of the job
