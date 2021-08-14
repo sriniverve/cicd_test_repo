@@ -20,7 +20,7 @@ jobs:
         uses: docker://technosophos/slack-notify
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_MESSAGE: Backend workflow triggered for checkin ${{ github.base_ref}} ${{ github.head_ref }} ${{ github.ref}} ${{ github.repository }} ${{ github.repository_owner }} ${{ github.sha }}
+          SLACK_MESSAGE: Backend workflow triggered for checkin base_ref ${{ github.base_ref}} head_ref ${{ github.head_ref }} ref ${{ github.ref}} repo ${{ github.repository }} repo_owner ${{ github.repository_owner }} sha ${{ github.sha }}
       - uses: actions/checkout@v2
       - name: Set up Python 3.9
         id: checkout
