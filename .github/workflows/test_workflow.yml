@@ -20,7 +20,7 @@ jobs:
         uses: docker://technosophos/slack-notify
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_MESSAGE: Backend workflow triggered by ${{ github.event.committer.name }} for ${{ github.event.committer.message }}
+          SLACK_MESSAGE: Backend workflow triggered by ${{ github.event.commits.committer.name }} for ${{ github.event.commits.committer.message }}
       - uses: actions/checkout@v2
       - name: Set up Python 3.9
         id: checkout
