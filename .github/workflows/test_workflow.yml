@@ -46,7 +46,7 @@ jobs:
         uses: docker://technosophos/slack-notify
         env: 
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_MESSAGE: Backend Stage Deploy Successful!!
+          SLACK_MESSAGE: Backend Stage Deploy for the commit, ${{ github.sha }} is Successful!!
           
       - name: slack message notification on failure
         id: slack_failure
@@ -54,4 +54,4 @@ jobs:
         uses: docker://technosophos/slack-notify
         env: 
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_MESSAGE: Backend Deploy Failed!!
+          SLACK_MESSAGE: Backend Deploy  for the commit, ${{ github.sha }} Failed!!
