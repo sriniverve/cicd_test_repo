@@ -37,24 +37,10 @@ jobs:
         id: dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r pip_requirements_.txt
+          pip install -r pip_requirements.txt
       - name: Run test message
         run: |
           pwd
-      - name: slack message notification
-        id: slack_success
-        uses: docker://technosophos/slack-notify
-        env: 
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_MESSAGE: Backend Stage Deploy for the commit, ${{ github.sha }} is Successful!!
-          
-      - name: slack message notification on failure
-        id: slack_failure
-        if: failure()
-        uses: docker://technosophos/slack-notify
-        env: 
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_MESSAGE: Backend Deploy  for the commit, ${{ github.sha }} Failed!!
           
       - name: Slack Notification
         if: always()
@@ -63,8 +49,8 @@ jobs:
           SLACK_CHANNEL: cicd-updates
           SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
           SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_MESSAGE: Backend Deploy  for the commit, ${{ github.sha }} ${{ job.status }}!!
-          SLACK_TITLE: 
+          SLACK_TITLE: Message
+          SLACK_MESSAGE: Backend Deploy  ${{ job.status }}!!
           SLACK_USERNAME: ci-cd-updates
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
