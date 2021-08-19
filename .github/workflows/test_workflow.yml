@@ -37,7 +37,7 @@ jobs:
         id: dependencies
         run: |
           python -m pip install --upgrade pip
-          #pip install -r pip_requirements.txt
+          pip install -r pip_requirements.txt
       - name: Run test message
         run: |
           pwd
@@ -57,13 +57,14 @@ jobs:
           SLACK_MESSAGE: Backend Deploy  for the commit, ${{ github.sha }} Failed!!
           
       - name: Slack Notification
+        if: always()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: cicd-updates
           SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
           SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_MESSAGE: Backend Deploy  for the commit, ${{ github.sha }} Failed!!
-          SLACK_TITLE: Post Title
+          SLACK_MESSAGE: Backend Deploy  for the commit, ${{ github.sha }} ${{ job.status }}!!
+          SLACK_TITLE: 
           SLACK_USERNAME: ci-cd-updates
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
