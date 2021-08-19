@@ -55,6 +55,11 @@ jobs:
         env: 
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_MESSAGE: Backend Deploy  for the commit, ${{ github.sha }} Failed!!
+          
+      - uses: act10ns/slack@v1
+        with: 
+          status: ${{ job.status }}
+        if: always()
 
   one:
     runs-on: ubuntu-latest
