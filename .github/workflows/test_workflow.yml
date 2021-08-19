@@ -43,7 +43,7 @@ jobs:
         env:
           SLACK_CHANNEL: cicd-updates
           SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
-          SLACK_ICON: 
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
           SLACK_TITLE: Message
           SLACK_MESSAGE: 
           SLACK_USERNAME: ci-cd-updates
