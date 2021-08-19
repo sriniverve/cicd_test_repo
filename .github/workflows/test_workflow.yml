@@ -57,8 +57,10 @@ jobs:
           SLACK_MESSAGE: Backend Deploy  for the commit, ${{ github.sha }} Failed!!
           
       - uses: act10ns/slack@v1
-        with: 
+        with:
           status: ${{ job.status }}
+          steps: ${{ toJson(steps) }}
+          channel: '#cicd-updates'
         if: always()
 
   one:
